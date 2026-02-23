@@ -1,8 +1,6 @@
 import pandas as pd
 import time
-import sys
 
-sys.setrecursionlimit(2000000)
 
 def heapify(A, n, i):
     while True:
