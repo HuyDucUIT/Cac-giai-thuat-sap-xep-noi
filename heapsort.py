@@ -5,20 +5,21 @@ import sys
 sys.setrecursionlimit(2000000)
 
 def heapify(A, n, i):
-    left = 2 * i + 1
-    right = 2 * i + 2
-    
-    if left < n and A[left] > A[i]:
-        largest = left
-    else:
+    while True:
         largest = i
+        left = 2 * i + 1
+        right = 2 * i + 2
         
-    if right < n and A[right] > A[largest]:
-        largest = right
+        if left < n and A[left] > A[largest]:
+            largest = left
+        if right < n and A[right] > A[largest]:
+            largest = right
         
-    if largest != i:
+        if largest == i:
+            break
+        
         A[i], A[largest] = A[largest], A[i]
-        heapify(A, n, largest)
+        i = largest
 
 def build_max_heap(A):
     n = len(A)
