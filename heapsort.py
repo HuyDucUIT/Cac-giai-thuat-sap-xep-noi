@@ -17,7 +17,6 @@ def heapify(A, n, i):
         
         if largest == i:
             break
-        
         A[i], A[largest] = A[largest], A[i]
         i = largest
 
