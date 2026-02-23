@@ -1,8 +1,6 @@
 import pandas as pd
 import time
-import sys
 
-sys.setrecursionlimit(2000000)
 
 def quick_sort(arr):
     if len(arr) <= 1:
