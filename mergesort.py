@@ -3,36 +3,25 @@ import time
 
 def merge(a, b):
     c = []
-    while len(a) > 0 and len(b) > 0:
-        if a[0] > b[0]:
-            c.append(b[0])
-            b.pop(0)
+    i = j = 0
+    while i < len(a) and j < len(b):
+        if a[i] > b[j]:
+            c.append(b[j])
+            j += 1
         else:
-            c.append(a[0])
-            a.pop(0)
-            
-    while len(a) > 0:
-        c.append(a[0])
-        a.pop(0)
-        
-    while len(b) > 0:
-        c.append(b[0])
-        b.pop(0)
-        
+            c.append(a[i])
+            i += 1
+    c.extend(a[i:])
+    c.extend(b[j:])
     return c
 
 def merge_sort(a):
     n = len(a)
     if n <= 1:
         return a
-    
     mid = n // 2
-    array1 = a[:mid]
-    array2 = a[mid:]
-    
-    array1 = merge_sort(array1)
-    array2 = merge_sort(array2)
-    
+    array1 = merge_sort(a[:mid])
+    array2 = merge_sort(a[mid:])
     return merge(array1, array2)
 
 df = pd.read_csv('data.csv')
